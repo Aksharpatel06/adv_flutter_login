@@ -62,4 +62,9 @@ class FirebaseSarvice {
       }
     }
   }
+
+  void emailLogout()
+  {
+    auth.signOut();
+  }
 }

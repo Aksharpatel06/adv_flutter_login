@@ -14,6 +14,8 @@ class LoginController extends GetxController {
     isPwdShow.value = !isPwdShow.value;
   }
 
+
+
   TextEditingController txtEmail = TextEditingController();
   TextEditingController txtCreateEmail = TextEditingController();
   TextEditingController txtCreatePwd = TextEditingController();

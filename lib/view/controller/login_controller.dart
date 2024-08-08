@@ -1,7 +1,9 @@
+import 'dart:developer';
+
 import 'package:adv_flutter_login/view/helper/firebase_sarvice.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
+
 
 class LoginController extends GetxController {
 
@@ -25,7 +27,7 @@ class LoginController extends GetxController {
       TextEditingController txtPwd, TextEditingController txtConfirmPwd) async {
     error.value = validateEmail(txtEmail.text) ?? '';
     pwd.value = validatePassword(txtPwd.text, txtConfirmPwd.text) ?? '';
-
+log('${error.isEmpty && pwd.isEmpty}');
     if (error.isEmpty && pwd.isEmpty) {
       await FirebaseSarvice.firebaseSarvice
           .createEmailAndPassword(txtEmail.text, txtConfirmPwd.text);

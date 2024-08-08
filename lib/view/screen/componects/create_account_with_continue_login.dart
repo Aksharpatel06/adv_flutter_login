@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../../../../utils/color.dart';
+import '../../../utils/color.dart';
 
-
-
-Column createAccountWithLogin() {
+Column createAccountWithLogin(String account) {
   return Column(
     children: [
       const SizedBox(
         height: 40,
       ),
-      const Text(
-        'Create new account',
+      Text(
+        account,
         textAlign: TextAlign.center,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 20,
           letterSpacing: 1.5,
           fontWeight: FontWeight.w600,

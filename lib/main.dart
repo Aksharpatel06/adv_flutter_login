@@ -1,5 +1,6 @@
 import 'package:adv_flutter_login/firebase_options.dart';
 import 'package:adv_flutter_login/view/screen/sign%20in/signin_screen.dart';
+import 'package:adv_flutter_login/view/screen/sign%20up/sign_up_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignInScreen(),
+      home: SignUpScreen(),
     );
   }
 }

@@ -2,8 +2,8 @@ import 'package:adv_flutter_login/view/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'componects/create_account_with_continue_login.dart';
-import 'componects/login_title.dart';
+import '../componects/create_account_with_continue_login.dart';
+import '../componects/login_title.dart';
 import 'componects/signin_button.dart';
 import 'componects/textfield_forgot.dart';
 
@@ -29,12 +29,13 @@ class SignInScreen extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
-                  loginTitle(),
+                  loginTitle(
+                      'Login here', 'Welcome back you’ve \nbeen missed!'),
                   textFieldAndForgot(
                       loginController.txtEmail, loginController.txtPwd),
                   signInButton(loginController, loginController.txtEmail,
                       loginController.txtPwd),
-                  createAccountWithLogin(),
+                  createAccountWithLogin('Create new account'),
                 ],
               ),
             ),

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../utils/color.dart';
 
-Column textFieldAndForgot(
-    TextEditingController txtMail, TextEditingController txtPwd) {
+Column signupTextField() {
   return Column(
     children: [
       Container(
@@ -12,7 +11,7 @@ Column textFieldAndForgot(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
         ),
         child: TextFormField(
-          controller: txtMail,
+          // controller: txtMail,
           decoration: InputDecoration(
               contentPadding: const EdgeInsets.all(18),
               fillColor: Colors.red,
@@ -36,7 +35,7 @@ Column textFieldAndForgot(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
         ),
         child: TextFormField(
-          controller: txtPwd,
+          // controller: txtPwd,
           decoration: InputDecoration(
               contentPadding: const EdgeInsets.all(18),
               border: const OutlineInputBorder(
@@ -54,20 +53,33 @@ Column textFieldAndForgot(
         ),
       ),
       const SizedBox(
-        height: 20,
+        height: 25,
       ),
-      Align(
-        alignment: Alignment.centerRight,
-        child: Text(
-          'Forgot your password?',
-          style: TextStyle(
-            fontSize: 18,
-            color: primaryColor,
-          ),
+      Container(
+        decoration: BoxDecoration(
+          color: countinerColor.withOpacity(0.5),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+        ),
+        child: TextFormField(
+          // controller: txtPwd,
+          decoration: InputDecoration(
+              contentPadding: const EdgeInsets.all(18),
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                borderSide: BorderSide.none,
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  borderSide: BorderSide(color: primaryColor)),
+              hintText: 'Confirm Password',
+              hintStyle: TextStyle(
+                color: primaryColor.withOpacity(0.3),
+                fontSize: 20,
+              )),
         ),
       ),
       const SizedBox(
-        height: 30,
+        height: 50,
       ),
     ],
   );

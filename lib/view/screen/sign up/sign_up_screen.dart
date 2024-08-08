@@ -1,4 +1,7 @@
+import 'package:adv_flutter_login/view/controller/login_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 
 import '../../../utils/color.dart';
 import '../componects/create_account_with_continue_login.dart';
@@ -10,6 +13,7 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LoginController loginController = Get.find();
     return Scaffold(
       body: Container(
         height: double.infinity,
@@ -28,10 +32,30 @@ class SignUpScreen extends StatelessWidget {
                 children: [
                   loginTitle('Create Account',
                       'Create an account so you can explore all the existing jobs'),
-                  signupTextField(),
+                  signupTextField(loginController),
                   GestureDetector(
                     onTap: () {
-
+                      loginController.validateInputs(
+                          loginController.txtCreateEmail,
+                          loginController.txtCreatePwd,
+                          loginController.txtConfirmPwd);
+                      Fluttertoast.showToast(
+                          msg: (loginController.error.value.isNotEmpty ||
+                                  loginController.pwd.value.isNotEmpty)
+                              ? loginController.error.value.isNotEmpty
+                                  ? loginController.error.value
+                                  : loginController.pwd.value
+                              : 'SuccessFully Login',
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor:
+                              (loginController.error.value.isNotEmpty ||
+                                      loginController.pwd.value.isNotEmpty||loginController.txtConfirmPwd.text.isEmpty )
+                                  ? Colors.redAccent
+                                  : Colors.green.withOpacity(0.7),
+                          textColor: Colors.white,
+                          fontSize: 16.0);
                     },
                     child: Container(
                       height: 65,
@@ -40,7 +64,7 @@ class SignUpScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: secounderyColor,
                           borderRadius: BorderRadius.circular(10)),
-                      child:  Text(
+                      child: Text(
                         'Sign up',
                         style: TextStyle(
                             color: boxColor,

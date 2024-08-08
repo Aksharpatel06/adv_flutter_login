@@ -1,8 +1,9 @@
+import 'package:adv_flutter_login/view/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/color.dart';
 
-Column signupTextField() {
+Column signupTextField(LoginController login) {
   return Column(
     children: [
       Container(
@@ -11,7 +12,7 @@ Column signupTextField() {
           borderRadius: const BorderRadius.all(Radius.circular(10)),
         ),
         child: TextFormField(
-          // controller: txtMail,
+          controller: login.txtCreateEmail,
           decoration: InputDecoration(
               contentPadding: const EdgeInsets.all(18),
               fillColor: Colors.red,
@@ -23,7 +24,8 @@ Column signupTextField() {
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                   borderSide: BorderSide(color: primaryColor)),
               hintText: 'Email',
-              hintStyle: TextStyle(color: primaryColor.withOpacity(0.3), fontSize: 20)),
+              hintStyle: TextStyle(
+                  color: primaryColor.withOpacity(0.3), fontSize: 20)),
         ),
       ),
       const SizedBox(
@@ -35,7 +37,7 @@ Column signupTextField() {
           borderRadius: const BorderRadius.all(Radius.circular(10)),
         ),
         child: TextFormField(
-          // controller: txtPwd,
+          controller: login.txtCreatePwd,
           decoration: InputDecoration(
               contentPadding: const EdgeInsets.all(18),
               border: const OutlineInputBorder(
@@ -61,7 +63,7 @@ Column signupTextField() {
           borderRadius: const BorderRadius.all(Radius.circular(10)),
         ),
         child: TextFormField(
-          // controller: txtPwd,
+          controller: login.txtConfirmPwd,
           decoration: InputDecoration(
               contentPadding: const EdgeInsets.all(18),
               border: const OutlineInputBorder(

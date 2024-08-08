@@ -12,7 +12,7 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LoginController loginController = Get.put(LoginController());
+    LoginController loginController = Get.find();
     return Scaffold(
       body: Container(
         height: double.infinity,
@@ -31,8 +31,8 @@ class SignInScreen extends StatelessWidget {
                 children: [
                   loginTitle(
                       'Login here', 'Welcome back you’ve \nbeen missed!'),
-                  textFieldAndForgot(
-                      loginController.txtEmail, loginController.txtPwd),
+                  textFieldAndForgot(loginController.txtEmail,
+                      loginController.txtPwd, loginController),
                   signInButton(loginController, loginController.txtEmail,
                       loginController.txtPwd),
                   createAccountWithLogin('Create new account'),

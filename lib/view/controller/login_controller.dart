@@ -1,22 +1,79 @@
+import 'package:adv_flutter_login/view/helper/firebase_sarvice.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 
-class LoginController extends GetxController{
+class LoginController extends GetxController {
+
+  RxBool isPwdShow = false.obs;
+
+  void pwdShowCharAndStar()
+  {
+    isPwdShow.value = !isPwdShow.value;
+  }
 
   TextEditingController txtEmail = TextEditingController();
+  TextEditingController txtCreateEmail = TextEditingController();
+  TextEditingController txtCreatePwd = TextEditingController();
+  TextEditingController txtConfirmPwd = TextEditingController();
   TextEditingController txtPwd = TextEditingController();
 
+  RxString error = ''.obs;
+  RxString pwd = ''.obs;
 
-  RxString email=''.obs;
-  RxString pwd=''.obs;
-  void validateInputs(TextEditingController txtEmail,TextEditingController txtPwd)
-  {
-    email.value = '';
-    pwd.value = validatePassword(txtPwd.text)??'';
+  Future<void> validateInputs(TextEditingController txtEmail,
+      TextEditingController txtPwd, TextEditingController txtConfirmPwd) async {
+    error.value = validateEmail(txtEmail.text) ?? '';
+    pwd.value = validatePassword(txtPwd.text, txtConfirmPwd.text) ?? '';
+
+    if (error.isEmpty && pwd.isEmpty) {
+      await FirebaseSarvice.firebaseSarvice
+          .createEmailAndPassword(txtEmail.text, txtConfirmPwd.text);
+    }
     update();
   }
 
-  validatePassword(String? value) {
+  validateEmail(String? value) {
+    if (value!.isEmpty || value == '') {
+      return 'Please enter email!';
+    } else {
+      var g = '';
+      var gmail = 'moc.liamg@';
+      var gmai = 0;
+      var sepcialChecking = 0;
+
+      g = value;
+      var len = g.length;
+      var k = 0;
+      if (len >= 11) {
+        for (var j = len - 1; j > len - 11; j--) {
+          if (g[j] != gmail[k]) {
+            gmai = 1;
+          }
+          k++;
+        }
+        if (gmai == 0) {
+          for (var j = 0; j < len - 11; j++) {
+            if ((g.codeUnitAt(j) >= 33 && g.codeUnitAt(j) <= 47) ||
+                (g.codeUnitAt(j) >= 58 && g.codeUnitAt(j) <= 64)) {
+              sepcialChecking = 1;
+            }
+          }
+          if (sepcialChecking == 0) {
+          } else {
+            return 'Invalid email format';
+          }
+        } else {
+          return 'Invalid domain name!';
+        }
+      } else {
+        return 'Please enter email!';
+      }
+    }
+    return null;
+  }
+
+  validatePassword(String? value, String? pwd) {
     if (value!.isEmpty || value == '') {
       return 'Enter strong password!';
     } else {
@@ -67,7 +124,9 @@ class LoginController extends GetxController{
         return 'Enter strong password!';
       }
     }
-
+    if (value != pwd) {
+      return 'Enter correct password!';
+    }
     return null;
   }
 }

@@ -1,3 +1,4 @@
+import 'package:adv_flutter_login/view/helper/firebase_sarvice.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -9,24 +10,7 @@ import '../../../controller/login_controller.dart';
 GestureDetector signInButton(LoginController loginController, TextEditingController txtMail, TextEditingController txtPwd) {
   return GestureDetector(
     onTap: () {
-      loginController.validateInputs(txtMail, txtPwd);
-      Fluttertoast.showToast(
-          msg: (loginController.email.value.isNotEmpty ||
-              loginController.pwd.value.isNotEmpty)
-              ? loginController.email.value.isNotEmpty
-              ? loginController.email.value
-              : loginController.pwd.value
-              : 'SuccessFully Login',
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor:
-          (loginController.email.value.isNotEmpty ||
-              loginController.pwd.value.isNotEmpty)
-              ? Colors.redAccent
-              : Colors.green.withOpacity(0.7),
-          textColor: Colors.white,
-          fontSize: 16.0);
+      FirebaseSarvice.firebaseSarvice.compareEmailAndPwd(loginController.txtEmail.text, loginController.txtPwd.text);
     },
     child: Container(
       height: 65,

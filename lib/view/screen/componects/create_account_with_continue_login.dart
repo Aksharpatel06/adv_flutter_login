@@ -1,4 +1,5 @@
 import 'package:adv_flutter_login/view/helper/google_sign_in_sarvice.dart';
+import 'package:adv_flutter_login/view/screen/home/home_screen.dart';
 import 'package:adv_flutter_login/view/screen/sign%20in/signin_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -56,6 +57,10 @@ Column createAccountWithLogin(String account) {
             onPressed: () async {
               String status = await GoogleSignInSarvice.googleSignInSarvice.signInWithGoogle();
               Fluttertoast.showToast(msg: status);
+              if(status=='Suceess')
+                {
+                  Get.to(const HomeScreen());
+                }
             },
             padding: EdgeInsets.zero,
             child: Container(

@@ -1,6 +1,8 @@
+import 'package:adv_flutter_login/view/helper/google_sign_in_sarvice.dart';
 import 'package:adv_flutter_login/view/screen/sign%20in/signin_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
 import '../../../utils/color.dart';
@@ -50,14 +52,21 @@ Column createAccountWithLogin(String account) {
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: countinerColor.withOpacity(0.5),
-              image: const DecorationImage(
-                image: AssetImage('asset/img/apple.png'),
+          CupertinoButton(
+            onPressed: () async {
+              String status = await GoogleSignInSarvice.googleSignInSarvice.signInWithGoogle();
+              Fluttertoast.showToast(msg: status);
+            },
+            padding: EdgeInsets.zero,
+            child: Container(
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: countinerColor.withOpacity(0.5),
+                image: const DecorationImage(
+                  image: AssetImage('asset/img/google.png'),
+                ),
               ),
             ),
           ),

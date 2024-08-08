@@ -1,4 +1,7 @@
+import 'package:adv_flutter_login/view/screen/sign%20in/signin_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../utils/color.dart';
 
@@ -8,13 +11,24 @@ Column createAccountWithLogin(String account) {
       const SizedBox(
         height: 40,
       ),
-      Text(
-        account,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          fontSize: 20,
-          letterSpacing: 1.5,
-          fontWeight: FontWeight.w600,
+      CupertinoButton(
+        onPressed: () {
+          if (account == 'Already have an account') {
+            Get.to(() => const SignInScreen(),
+                duration: const Duration(milliseconds: 500),
+                transition: Transition.circularReveal);
+          } else {
+            Get.back();
+          }
+        },
+        child: Text(
+          account,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.grey.shade700,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
       const SizedBox(

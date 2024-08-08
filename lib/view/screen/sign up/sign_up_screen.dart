@@ -41,7 +41,7 @@ class SignUpScreen extends StatelessWidget {
                           color: secounderyColor,
                           borderRadius: BorderRadius.circular(10)),
                       child:  Text(
-                        'Sign in ',
+                        'Sign up',
                         style: TextStyle(
                             color: boxColor,
                             fontSize: 23,

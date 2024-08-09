@@ -65,6 +65,11 @@ class FirebaseSarvice {
 
   void emailLogout()
   {
-    auth.signOut();
+    try{
+      auth.signOut();
+    }catch(e)
+    {
+      log(e.toString());
+    }
   }
 }

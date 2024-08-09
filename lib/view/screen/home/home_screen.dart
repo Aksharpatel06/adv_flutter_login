@@ -1,5 +1,6 @@
 import 'package:adv_flutter_login/view/helper/firebase_sarvice.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,6 +15,7 @@ class HomeScreen extends StatelessWidget {
             icon: const Icon(Icons.logout),
             onPressed: () {
               FirebaseSarvice.firebaseSarvice.emailLogout();
+              Get.back();
             },
           ),
         ],

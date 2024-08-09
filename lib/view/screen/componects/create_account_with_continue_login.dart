@@ -1,7 +1,7 @@
 import 'package:adv_flutter_login/view/controller/login_controller.dart';
 import 'package:adv_flutter_login/view/helper/google_sign_in_sarvice.dart';
 import 'package:adv_flutter_login/view/screen/home/home_screen.dart';
-import 'package:adv_flutter_login/view/screen/sign%20in/signin_screen.dart';
+import 'package:adv_flutter_login/view/screen/sign%20up/sign_up_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 
 import '../../../utils/color.dart';
 
-Column createAccountWithLogin(String account,LoginController controller) {
+Column createAccountWithLogin(String account, LoginController controller) {
   return Column(
     children: [
       const SizedBox(
@@ -18,11 +18,11 @@ Column createAccountWithLogin(String account,LoginController controller) {
       CupertinoButton(
         onPressed: () {
           if (account == 'Already have an account') {
-            Get.to(() => const SignInScreen(),
+            Get.back();
+          } else {
+            Get.to(() => const SignUpScreen(),
                 duration: const Duration(milliseconds: 500),
                 transition: Transition.circularReveal);
-          } else {
-            Get.back();
           }
         },
         child: Text(
@@ -56,13 +56,13 @@ Column createAccountWithLogin(String account,LoginController controller) {
         children: [
           CupertinoButton(
             onPressed: () async {
-              String status = await GoogleSignInSarvice.googleSignInSarvice.signInWithGoogle();
+              String status = await GoogleSignInSarvice.googleSignInSarvice
+                  .signInWithGoogle();
               Fluttertoast.showToast(msg: status);
-              if(status=='Suceess')
-                {
-                  Get.to(const HomeScreen());
-                 controller.getUserDetails();
-                }
+              if (status == 'Suceess') {
+                Get.to(const HomeScreen());
+                controller.getUserDetails();
+              }
             },
             padding: EdgeInsets.zero,
             child: Container(

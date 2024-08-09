@@ -6,13 +6,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class LoginController extends GetxController {
-
   RxBool isPwdShow = false.obs;
 
-  void pwdShowCharAndStar()
-  {
+  void pwdShowCharAndStar() {
     isPwdShow.value = !isPwdShow.value;
   }
 
@@ -25,23 +22,20 @@ class LoginController extends GetxController {
   RxString error = ''.obs;
   RxString pwd = ''.obs;
 
-  RxString email =''.obs;
-  RxString name =''.obs;
-  RxString url =''.obs;
+  RxString email = ''.obs;
+  RxString name = ''.obs;
+  RxString url = ''.obs;
 
-  void getUserDetails(){
+  void getUserDetails() {
     User? user = GoogleSignInSarvice.googleSignInSarvice.currentUser();
-    if(user!=null)
-      {
-        email.value = user.email!;
-        url.value = user.photoURL!;
-        name.value = user.displayName!;
-      }
-
+    if (user != null) {
+      email.value = user.email!;
+      url.value = user.photoURL!;
+      name.value = user.displayName!;
+    }
   }
 
-  void emailLayout()
-  {
+  void emailLayout() {
     FirebaseSarvice.firebaseSarvice.emailLogout();
     GoogleSignInSarvice.googleSignInSarvice.emailLogout();
   }
@@ -50,7 +44,7 @@ class LoginController extends GetxController {
       TextEditingController txtPwd, TextEditingController txtConfirmPwd) async {
     error.value = validateEmail(txtEmail.text) ?? '';
     pwd.value = validatePassword(txtPwd.text, txtConfirmPwd.text) ?? '';
-log('${error.isEmpty && pwd.isEmpty}');
+    log('${error.isEmpty && pwd.isEmpty}');
     if (error.isEmpty && pwd.isEmpty) {
       await FirebaseSarvice.firebaseSarvice
           .createEmailAndPassword(txtEmail.text, txtConfirmPwd.text);

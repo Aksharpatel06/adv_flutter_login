@@ -10,7 +10,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     LoginController controller = Get.put(LoginController());
 
-    controller.getUserDetails();
     return Scaffold(
       drawer: Drawer(
         child: Column(
@@ -19,7 +18,8 @@ class HomeScreen extends StatelessWidget {
               child: Obx(
                 () => CircleAvatar(
                   radius: 50,
-                  backgroundImage: NetworkImage(controller.url.value),
+                  backgroundImage: NetworkImage(controller.url.value ??
+                      'https://i.pinimg.com/736x/21/e2/b9/21e2b954bb6f411d9df77315735ff490.jpg'),
                 ),
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:adv_flutter_login/view/controller/login_controller.dart';
 import 'package:adv_flutter_login/view/helper/google_sign_in_sarvice.dart';
 import 'package:adv_flutter_login/view/screen/home/home_screen.dart';
 import 'package:adv_flutter_login/view/screen/sign%20in/signin_screen.dart';
@@ -8,7 +9,7 @@ import 'package:get/get.dart';
 
 import '../../../utils/color.dart';
 
-Column createAccountWithLogin(String account) {
+Column createAccountWithLogin(String account,LoginController controller) {
   return Column(
     children: [
       const SizedBox(
@@ -60,6 +61,7 @@ Column createAccountWithLogin(String account) {
               if(status=='Suceess')
                 {
                   Get.to(const HomeScreen());
+                 controller.getUserDetails();
                 }
             },
             padding: EdgeInsets.zero,

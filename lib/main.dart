@@ -1,6 +1,8 @@
 import 'package:adv_flutter_login/firebase_options.dart';
 import 'package:adv_flutter_login/view/controller/login_controller.dart';
-import 'package:adv_flutter_login/view/screen/sign%20up/sign_up_screen.dart';
+import 'package:adv_flutter_login/view/helper/google_sign_in_sarvice.dart';
+import 'package:adv_flutter_login/view/screen/home/home_screen.dart';
+import 'package:adv_flutter_login/view/screen/sign%20in/signin_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,9 +20,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(LoginController());
-    return const GetMaterialApp(
+    return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignUpScreen(),
+      home: GoogleSignInSarvice.googleSignInSarvice.currentUser()==null?const SignInScreen():const HomeScreen(),
     );
   }
 }

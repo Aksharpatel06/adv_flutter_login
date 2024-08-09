@@ -35,7 +35,7 @@ class SignInScreen extends StatelessWidget {
                       loginController.txtPwd, loginController),
                   signInButton(loginController, loginController.txtEmail,
                       loginController.txtPwd),
-                  createAccountWithLogin('Create new account'),
+                  createAccountWithLogin('Create new account',loginController),
                 ],
               ),
             ),

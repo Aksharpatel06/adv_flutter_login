@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:adv_flutter_login/view/helper/firebase_sarvice.dart';
+import 'package:adv_flutter_login/view/helper/google_sign_in_sarvice.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,6 +16,12 @@ class LoginController extends GetxController {
     isPwdShow.value = !isPwdShow.value;
   }
 
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    getUserDetails();
+  }
 
 
   TextEditingController txtEmail = TextEditingController();
@@ -24,6 +32,27 @@ class LoginController extends GetxController {
 
   RxString error = ''.obs;
   RxString pwd = ''.obs;
+
+  RxString email =''.obs;
+  RxString name =''.obs;
+  RxString url =''.obs;
+
+  void getUserDetails(){
+    User? user = GoogleSignInSarvice.googleSignInSarvice.currentUser();
+    if(user!=null)
+      {
+        email.value = user.email!;
+        url.value = user.photoURL!;
+        name.value = user.displayName!;
+      }
+
+  }
+
+  void emailLayout()
+  {
+    FirebaseSarvice.firebaseSarvice.emailLogout();
+    GoogleSignInSarvice.googleSignInSarvice.emailLogout();
+  }
 
   Future<void> validateInputs(TextEditingController txtEmail,
       TextEditingController txtPwd, TextEditingController txtConfirmPwd) async {

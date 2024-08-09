@@ -73,7 +73,7 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  createAccountWithLogin('Already have an account'),
+                  createAccountWithLogin('Already have an account',loginController),
                 ],
               ),
             ),

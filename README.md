@@ -142,3 +142,8 @@ This structure outlines the core components and flow without delving into specif
   <img src='https://github.com/user-attachments/assets/10fbeb6d-b519-40f1-a1c1-66e9825ea857' width=240>
   <img src='https://github.com/user-attachments/assets/8659418a-6c9d-4f9a-a38a-55a3d7b34c14' width=240>
 </p>
+
+### Video
+
+https://github.com/user-attachments/assets/8bd86444-61a4-49f6-81e1-521842b1cb62
+

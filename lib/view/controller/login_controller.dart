@@ -16,14 +16,6 @@ class LoginController extends GetxController {
     isPwdShow.value = !isPwdShow.value;
   }
 
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-    getUserDetails();
-  }
-
-
   TextEditingController txtEmail = TextEditingController();
   TextEditingController txtCreateEmail = TextEditingController();
   TextEditingController txtCreatePwd = TextEditingController();

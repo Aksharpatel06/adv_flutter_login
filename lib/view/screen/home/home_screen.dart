@@ -10,21 +10,24 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     LoginController controller = Get.put(LoginController());
 
+    controller.getUserDetails();
     return Scaffold(
-      drawer:  Drawer(
-          child: Column(
-            children: [
-              DrawerHeader(child: Obx(
-                ()=> CircleAvatar(
+      drawer: Drawer(
+        child: Column(
+          children: [
+            DrawerHeader(
+              child: Obx(
+                () => CircleAvatar(
                   radius: 50,
                   backgroundImage: NetworkImage(controller.url.value),
                 ),
-              )),
-              Obx(()=> Text(controller.email.value)),
-              Obx(()=> Text(controller.name.value)),
-            ],
-          ),
+              ),
+            ),
+            Obx(() => Text(controller.email.value)),
+            Obx(() => Text(controller.name.value)),
+          ],
         ),
+      ),
       appBar: AppBar(
         title: const Text("Home"),
         actions: [
@@ -32,7 +35,11 @@ class HomeScreen extends StatelessWidget {
             icon: const Icon(Icons.logout),
             onPressed: () {
               controller.emailLayout();
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignInScreen(),));
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SignInScreen(),
+                  ));
             },
           ),
         ],

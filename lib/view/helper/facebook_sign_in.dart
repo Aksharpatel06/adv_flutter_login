@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
@@ -7,37 +9,34 @@ class FacebookSignIn {
   FacebookSignIn._();
 
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  FacebookAuth facebookAuth = FacebookAuth.instance;
 
   Future<String> signInWithFacebook() async {
-    try{
+    try {
       // Trigger the sign-in flow
-      final LoginResult loginResult = await FacebookAuth.instance.login();
+      final LoginResult loginResult = await facebookAuth.login();
 
       // Create a credential from the access token
       final OAuthCredential facebookAuthCredential =
-      FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+          FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
 
       // Once signed in, return the UserCredential
       await firebaseAuth.signInWithCredential(facebookAuthCredential);
       currentUser();
       return 'Suceess';
-    }catch(e)
-    {
+    } catch (e) {
+      log(e.toString());
       return 'failed';
     }
-
   }
 
-  void emailLogout()
-  {
+  void emailLogout() {
     firebaseAuth.signOut();
   }
 
-  User? currentUser()
-  {
+  User? currentUser() {
     User? user = firebaseAuth.currentUser;
-    if(user!=null)
-    {
+    if (user != null) {
       print(user.email);
       print(user.displayName);
       print(user.phoneNumber);

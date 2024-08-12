@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:adv_flutter_login/view/helper/facebook_sign_in.dart';
 import 'package:adv_flutter_login/view/helper/firebase_sarvice.dart';
 import 'package:adv_flutter_login/view/helper/google_sign_in_sarvice.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -26,20 +27,26 @@ class LoginController extends GetxController {
   RxString name = ''.obs;
   RxString url = ''.obs;
 
-  void getUserDetails() {
+  Future<void> getUserDetails() async {
     User? user = GoogleSignInSarvice.googleSignInSarvice.currentUser();
+    User? userFacebook = FacebookSignIn.facebookSignIn.currentUser();
+
     if (user != null) {
       email.value = user.email!;
       url.value = user.photoURL!;
       name.value = user.displayName!;
-    }else{
-      
+    }
+    if (userFacebook != null) {
+      email.value = userFacebook.email!;
+      url.value = userFacebook.photoURL!;
+      name.value = userFacebook.displayName!;
     }
   }
 
   void emailLayout() {
     FirebaseSarvice.firebaseSarvice.emailLogout();
     GoogleSignInSarvice.googleSignInSarvice.emailLogout();
+    FacebookSignIn.facebookSignIn.emailLogout();
   }
 
   Future<void> validateInputs(TextEditingController txtEmail,

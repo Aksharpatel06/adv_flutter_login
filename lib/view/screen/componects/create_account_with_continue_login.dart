@@ -1,4 +1,5 @@
 import 'package:adv_flutter_login/view/controller/login_controller.dart';
+import 'package:adv_flutter_login/view/helper/facebook_sign_in.dart';
 import 'package:adv_flutter_login/view/helper/google_sign_in_sarvice.dart';
 import 'package:adv_flutter_login/view/screen/home/home_screen.dart';
 import 'package:adv_flutter_login/view/screen/sign%20up/sign_up_screen.dart';
@@ -80,14 +81,25 @@ Column createAccountWithLogin(String account, LoginController controller) {
           const SizedBox(
             width: 20,
           ),
-          Container(
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: countinerColor.withOpacity(0.5),
-              image: const DecorationImage(
-                image: AssetImage('asset/img/facebook.png'),
+          CupertinoButton(
+            onPressed: () async {
+              String status = await FacebookSignIn.facebookSignIn
+                  .signInWithFacebook();
+              Fluttertoast.showToast(msg: status);
+              if (status == 'Suceess') {
+                Get.to(const HomeScreen());
+                controller.getUserDetails();
+              }
+            },
+            child: Container(
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: countinerColor.withOpacity(0.5),
+                image: const DecorationImage(
+                  image: AssetImage('asset/img/facebook.png'),
+                ),
               ),
             ),
           ),

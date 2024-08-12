@@ -32,6 +32,8 @@ class LoginController extends GetxController {
       email.value = user.email!;
       url.value = user.photoURL!;
       name.value = user.displayName!;
+    }else{
+      
     }
   }
 

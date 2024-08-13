@@ -12,7 +12,7 @@ Column signupTextField(LoginController login) {
           borderRadius: const BorderRadius.all(Radius.circular(10)),
         ),
         child: TextFormField(
-          controller: login.txtCreateEmail,
+          controller: login.txtUsername,
           decoration: InputDecoration(
               contentPadding: const EdgeInsets.all(12),
               fillColor: Colors.red,

@@ -7,6 +7,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../helper/user_sarvice.dart';
+import '../modal/details_modal.dart';
+
 class LoginController extends GetxController {
   RxBool isPwdShow = false.obs;
 
@@ -15,6 +18,7 @@ class LoginController extends GetxController {
   }
 
   TextEditingController txtEmail = TextEditingController();
+  TextEditingController txtUsername = TextEditingController();
   TextEditingController txtCreateEmail = TextEditingController();
   TextEditingController txtCreatePwd = TextEditingController();
   TextEditingController txtConfirmPwd = TextEditingController();
@@ -57,6 +61,13 @@ class LoginController extends GetxController {
     if (error.isEmpty && pwd.isEmpty) {
       await FirebaseSarvice.firebaseSarvice
           .createEmailAndPassword(txtEmail.text, txtConfirmPwd.text);
+      Map m1={
+        'name':txtUsername,
+        'email':txtCreateEmail,
+      };
+
+      DetailsModal details = DetailsModal(m1);
+      UserSarvice.userSarvice.addUser(details);
     }
     update();
   }

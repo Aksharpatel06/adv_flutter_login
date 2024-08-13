@@ -1,3 +1,4 @@
+import 'package:adv_flutter_login/view/modal/details_modal.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserSarvice {
@@ -7,18 +8,23 @@ class UserSarvice {
 
   final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
-  Future<void> addUser() async {
-    final CollectionReference collectionReference =
-        firebaseFirestore.collection("users");
-    // Map<String,dynamic> data = {
-    //   'name':'Akshar patel',
-    //   'email':'akshar@gmail.com',
-    //   'phone':'+91 98654 32151'
-    // };
-    // await collectionReference.add(data);
-    // await collectionReference.doc(
-    //   //document name
-    // ).set(data);
+  // Future<void> addUser(Map data) async {
+  //   final CollectionReference collectionReference =
+  //       firebaseFirestore.collection("users");
+  //   // Map<String,dynamic> data = {
+  //   //   'name':'Akshar patel',
+  //   //   'email':'akshar@gmail.com',
+  //   //   'phone':'+91 98654 32151'
+  //   // };
+  //   // await collectionReference.add(data);
+  //   await collectionReference.doc(
+  //     data['email']
+  //   ).set(data);
+  // }
+  Future<void> addUser(DetailsModal details)
+  async {
+    CollectionReference user = firebaseFirestore.collection('user');
+    await user.doc(details.email).set(details.objectToMap(details));
   }
 
 
@@ -26,5 +32,11 @@ class UserSarvice {
   {
     Stream<QuerySnapshot> collectionStream = FirebaseFirestore.instance.collection('users').snapshots();
     return collectionStream;
+  }
+
+  DocumentReference<Object?> cureentUser(DetailsModal details)
+  {
+    CollectionReference user= firebaseFirestore.collection('user');
+    return user.doc(details.email);
   }
 }

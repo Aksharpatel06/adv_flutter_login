@@ -1,8 +1,11 @@
 import 'package:adv_flutter_login/view/controller/login_controller.dart';
 import 'package:adv_flutter_login/view/helper/facebook_sign_in.dart';
 import 'package:adv_flutter_login/view/helper/google_sign_in_sarvice.dart';
+import 'package:adv_flutter_login/view/helper/user_sarvice.dart';
+import 'package:adv_flutter_login/view/modal/details_modal.dart';
 import 'package:adv_flutter_login/view/screen/home/home_screen.dart';
 import 'package:adv_flutter_login/view/screen/sign%20up/sign_up_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -63,6 +66,14 @@ Column createAccountWithLogin(String account, LoginController controller) {
               if (status == 'Suceess') {
                 Get.to(const HomeScreen());
                 controller.getUserDetails();
+                User? user = GoogleSignInSarvice.googleSignInSarvice.currentUser();
+                Map m1={
+                  'name':user!.displayName,
+                  'email':user.email,
+                };
+
+                DetailsModal details = DetailsModal(m1);
+                UserSarvice.userSarvice.addUser(details);
               }
             },
             padding: EdgeInsets.zero,
@@ -89,6 +100,14 @@ Column createAccountWithLogin(String account, LoginController controller) {
               if (status == 'Success') {
                 Get.to(const HomeScreen());
                 controller.getUserDetails();
+                User? user = FacebookSignIn.facebookSignIn.currentUser();
+                Map m1={
+                  'name':user!.displayName,
+                  'email':user.email,
+                };
+
+                DetailsModal details = DetailsModal(m1);
+                UserSarvice.userSarvice.addUser(details);
               }
             },
             child: Container(

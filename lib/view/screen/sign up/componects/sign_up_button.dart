@@ -15,7 +15,7 @@ GestureDetector signUpButton(LoginController loginController) {
               ? loginController.error.value.isNotEmpty
                   ? loginController.error.value
                   : loginController.pwd.value
-              : 'SuccessFully Login',
+              : 'SuccessFully Register',
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,

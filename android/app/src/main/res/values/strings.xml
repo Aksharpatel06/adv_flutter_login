@@ -1,9 +1,9 @@
 <resources>
 
     <string name="app_name">Login App</string>
-    <string name="facebook_app_id">1234</string>
-    <string name="fb_login_protocol_scheme">fb1234</string>
-    <string name="facebook_client_token">56789</string>
+    <string name="facebook_app_id">430373699322288</string>
+    <string name="fb_login_protocol_scheme">fb430373699322288</string>
+    <string name="facebook_client_token">a15bc5d2fcc86d0ef415b3e645b636ea</string>
 </resources>
 
 

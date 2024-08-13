@@ -81,4 +81,3 @@ class MyApp extends StatelessWidget {
 //     );
 //   }
 // }
-// https://project-ff0d1.firebaseapp.com/__/auth/handler

@@ -12,7 +12,7 @@ GestureDetector signInButton(LoginController loginController, TextEditingControl
       FirebaseSarvice.firebaseSarvice.compareEmailAndPwd(loginController.txtEmail.text, loginController.txtPwd.text);
     },
     child: Container(
-      height: 65,
+      height: 55,
       width: double.infinity,
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -22,7 +22,7 @@ GestureDetector signInButton(LoginController loginController, TextEditingControl
         'Sign in ',
         style: TextStyle(
             color: boxColor,
-            fontSize: 23,
+            fontSize: 18,
             fontWeight: FontWeight.w700),
       ),
     ),

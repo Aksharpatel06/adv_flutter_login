@@ -14,7 +14,7 @@ Column createAccountWithLogin(String account, LoginController controller) {
   return Column(
     children: [
       const SizedBox(
-        height: 40,
+        height: 10,
       ),
       CupertinoButton(
         onPressed: () {
@@ -37,7 +37,7 @@ Column createAccountWithLogin(String account, LoginController controller) {
         ),
       ),
       const SizedBox(
-        height: 70,
+        height: 30,
       ),
       Text(
         'Or continue with',
@@ -86,7 +86,7 @@ Column createAccountWithLogin(String account, LoginController controller) {
               String status = await FacebookSignIn.facebookSignIn
                   .signInWithFacebook();
               Fluttertoast.showToast(msg: status);
-              if (status == 'Suceess') {
+              if (status == 'Success') {
                 Get.to(const HomeScreen());
                 controller.getUserDetails();
               }

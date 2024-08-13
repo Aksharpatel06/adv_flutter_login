@@ -15,7 +15,7 @@ Column textFieldAndForgot(TextEditingController txtMail,
         child: TextFormField(
           controller: txtMail,
           decoration: InputDecoration(
-              contentPadding: const EdgeInsets.all(18),
+              contentPadding: const EdgeInsets.all(12),
               fillColor: Colors.red,
               border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -26,7 +26,8 @@ Column textFieldAndForgot(TextEditingController txtMail,
                   borderSide: BorderSide(color: primaryColor)),
               hintText: 'Email',
               hintStyle: TextStyle(
-                  color: primaryColor.withOpacity(0.3), fontSize: 20)),
+                color: primaryColor.withOpacity(0.3),
+              )),
         ),
       ),
       const SizedBox(
@@ -53,7 +54,7 @@ Column textFieldAndForgot(TextEditingController txtMail,
                         login.pwdShowCharAndStar();
                       },
                       child: const Icon(Icons.visibility_off)),
-              contentPadding: const EdgeInsets.all(18),
+              contentPadding: const EdgeInsets.all(12),
               border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 borderSide: BorderSide.none,
@@ -64,7 +65,6 @@ Column textFieldAndForgot(TextEditingController txtMail,
               hintText: 'Password',
               hintStyle: TextStyle(
                 color: primaryColor.withOpacity(0.3),
-                fontSize: 20,
               )),
         ),
       ),
@@ -76,7 +76,7 @@ Column textFieldAndForgot(TextEditingController txtMail,
         child: Text(
           'Forgot your password?',
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 14,
             color: primaryColor,
           ),
         ),

@@ -28,13 +28,18 @@ class SignInScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  loginTitle(
-                      'Login here', 'Welcome back you’ve \nbeen missed!'),
-                  textFieldAndForgot(loginController.txtEmail,
-                      loginController.txtPwd, loginController),
-                  signInButton(loginController, loginController.txtEmail,
-                      loginController.txtPwd),
+                  Column(
+                    children: [
+                      loginTitle(
+                          'Login here', 'Welcome back you’ve \nbeen missed!'),
+                      textFieldAndForgot(loginController.txtEmail,
+                          loginController.txtPwd, loginController),
+                      signInButton(loginController, loginController.txtEmail,
+                          loginController.txtPwd),
+                    ],
+                  ),
                   createAccountWithLogin('Create new account',loginController),
                 ],
               ),

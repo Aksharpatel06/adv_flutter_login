@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:adv_flutter_login/view/helper/facebook_sign_in.dart';
 import 'package:adv_flutter_login/view/helper/firebase_sarvice.dart';
 import 'package:adv_flutter_login/view/helper/google_sign_in_sarvice.dart';
+import 'package:adv_flutter_login/view/screen/home/home_screen.dart';
+import 'package:adv_flutter_login/view/screen/sign%20in/signin_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -62,12 +64,13 @@ class LoginController extends GetxController {
       await FirebaseSarvice.firebaseSarvice
           .createEmailAndPassword(txtEmail.text, txtConfirmPwd.text);
       Map m1={
-        'name':txtUsername,
-        'email':txtCreateEmail,
+        'name':txtUsername.text,
+        'email':txtCreateEmail.text,
       };
 
       DetailsModal details = DetailsModal(m1);
       UserSarvice.userSarvice.addUser(details);
+      Get.to(const SignInScreen());
     }
     update();
   }

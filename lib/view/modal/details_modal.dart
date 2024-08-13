@@ -1,5 +1,5 @@
 class DetailsModal {
-  String username, email;
+  String? username, email;
 
   DetailsModal._({required this.username, required this.email});
 
@@ -9,8 +9,8 @@ class DetailsModal {
 
   Map<String, String> objectToMap(DetailsModal detailsModal) {
     return {
-      'username': detailsModal.username,
-      'email': detailsModal.email,
+      'username': detailsModal.username??'akshar',
+      'email': detailsModal.email!,
     };
   }
 }

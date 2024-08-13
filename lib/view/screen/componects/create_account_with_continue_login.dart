@@ -65,7 +65,9 @@ Column createAccountWithLogin(String account, LoginController controller) {
               Fluttertoast.showToast(msg: status);
               if (status == 'Suceess') {
                 Get.to(const HomeScreen());
-                controller.getUserDetails();
+                if (account == 'Already have an account') {
+                  controller.getUserDetails();
+                }
                 User? user = GoogleSignInSarvice.googleSignInSarvice.currentUser();
                 Map m1={
                   'name':user!.displayName,
@@ -99,7 +101,9 @@ Column createAccountWithLogin(String account, LoginController controller) {
               Fluttertoast.showToast(msg: status);
               if (status == 'Success') {
                 Get.to(const HomeScreen());
-                controller.getUserDetails();
+                if (account == 'Already have an account') {
+                  controller.getUserDetails();
+                }
                 User? user = FacebookSignIn.facebookSignIn.currentUser();
                 Map m1={
                   'name':user!.displayName,

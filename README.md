@@ -135,7 +135,6 @@ This structure outlines the core components and flow without delving into specif
 
 ### ScreenShorts
 
-
 <p align='center'>
   <img src='https://github.com/user-attachments/assets/8c283c5c-ea77-4807-8aeb-92c1a2639c9d' width=240>
   <img src='https://github.com/user-attachments/assets/978b7f60-0683-43da-93fe-9ed4a3d8758d' width=240>

@@ -1,5 +1,6 @@
 # Sign In & Sign Up with Email & Password with Google Authentication[(Source Code)](https://github.com/Aksharpatel06/adv_flutter_login/tree/master/lib)
 
+
 Certainly! Here's a concise breakdown of how to implement the login and sign-up app using GetX state management and Google email ID sign-in, without including the full screen code:
 
 ### **1. Project Setup**
